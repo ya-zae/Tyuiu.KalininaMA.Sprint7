@@ -29,25 +29,6 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
             double AveragePopulation = ds.Average(DataTable, 5);
         }
 
-        private void buttonNational_KMA_Click(object sender, EventArgs e)
-        {
-            chartStats_KMA.Series[0].Points.Clear();
-
-            this.chartStats_KMA.ChartAreas[0].AxisX.Title = "Преобладающая национальность";
-            this.chartStats_KMA.ChartAreas[0].AxisY.Title = "Количество стран";
-
-            string[,] DataTable = ds.GetMatrix(path);
-
-            string[] ArrayWords = ds.ArrayStrWordsElements(DataTable, 6);
-
-            int[] ArraySumWords = ds.ArraySumWords(DataTable, ArrayWords, 6);
-
-            for (int i = 0; i < ArrayWords.Length; i++)
-            {
-                chartStats_KMA.Series[0].Points.AddXY(ArrayWords[i], ArraySumWords[i]);
-            }
-        }
-
         private void buttonStats_KMA_Click_1(object sender, EventArgs e)
         {
             try
@@ -83,6 +64,25 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
         private void buttonOk_KMA_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonDevelop_KMA_Click(object sender, EventArgs e)
+        {
+            chartStats_KMA.Series[0].Points.Clear();
+
+            this.chartStats_KMA.ChartAreas[0].AxisX.Title = "Является ли страна развитой";
+            this.chartStats_KMA.ChartAreas[0].AxisY.Title = "Количество стран";
+
+            string[,] DataTable = ds.GetMatrix(path);
+
+            string[] ArrayWords = ds.ArrayStrWordsElements(DataTable, 4);
+
+            int[] ArraySumWords = ds.ArraySumWords(DataTable, ArrayWords, 4);
+
+            for (int i = 0; i < ArrayWords.Length; i++)
+            {
+                chartStats_KMA.Series[0].Points.AddXY(ArrayWords[i], ArraySumWords[i]);
+            }
         }
     }
 }
