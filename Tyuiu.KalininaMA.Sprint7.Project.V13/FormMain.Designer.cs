@@ -59,6 +59,7 @@
             textBoxAddCapital_KMA = new TextBox();
             textBoxAddCountry_KMA = new TextBox();
             groupBox1 = new GroupBox();
+            Columns_KMA = new Label();
             labelWhatSearch_KMA = new Label();
             buttonSearch_KMA = new Button();
             textBoxColumns_KMA = new TextBox();
@@ -380,6 +381,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(Columns_KMA);
             groupBox1.Controls.Add(labelWhatSearch_KMA);
             groupBox1.Controls.Add(buttonSearch_KMA);
             groupBox1.Controls.Add(textBoxColumns_KMA);
@@ -390,6 +392,15 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Поиск:";
+            // 
+            // Columns_KMA
+            // 
+            Columns_KMA.AutoSize = true;
+            Columns_KMA.Location = new Point(112, 23);
+            Columns_KMA.Name = "Columns_KMA";
+            Columns_KMA.Size = new Size(96, 15);
+            Columns_KMA.TabIndex = 4;
+            Columns_KMA.Text = "Номер столбца:";
             // 
             // labelWhatSearch_KMA
             // 
@@ -408,6 +419,7 @@
             buttonSearch_KMA.TabIndex = 2;
             buttonSearch_KMA.Text = "Поиск";
             buttonSearch_KMA.UseVisualStyleBackColor = true;
+            buttonSearch_KMA.Click += buttonSearch_KMA_Click;
             // 
             // textBoxColumns_KMA
             // 
@@ -415,6 +427,7 @@
             textBoxColumns_KMA.Name = "textBoxColumns_KMA";
             textBoxColumns_KMA.Size = new Size(100, 23);
             textBoxColumns_KMA.TabIndex = 1;
+            textBoxColumns_KMA.TextChanged += textBoxColumns_KMA_TextChanged;
             // 
             // textBoxWhatSearch_KMA
             // 
@@ -422,6 +435,7 @@
             textBoxWhatSearch_KMA.Name = "textBoxWhatSearch_KMA";
             textBoxWhatSearch_KMA.Size = new Size(100, 23);
             textBoxWhatSearch_KMA.TabIndex = 0;
+            textBoxWhatSearch_KMA.TextChanged += textBoxWhatSearch_KMA_TextChanged;
             // 
             // panel3
             // 
@@ -444,7 +458,7 @@
             groupBoxSort_KMA.Size = new Size(264, 48);
             groupBoxSort_KMA.TabIndex = 1;
             groupBoxSort_KMA.TabStop = false;
-            groupBoxSort_KMA.Text = "Сортировка";
+            groupBoxSort_KMA.Text = "Сортировка по численности населения";
             // 
             // ToolStripMenuItemSortMin_KMA
             // 
@@ -566,5 +580,6 @@
         private ToolTip toolTip_KMA;
         private Button buttonDelete_KMA;
         private Label labelWhatSearch_KMA;
+        private Label Columns_KMA;
     }
 }

@@ -154,6 +154,17 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
                     dataGridViewResult_KMA.Rows[r].Cells[c].Value = DataMatrix[r, c];
                 }
             }
+
+            // 3. ОЧИСТКА ПОЛЕЙ ПОИСКА (добавьте этот код)
+            textBoxWhatSearch_KMA.Text = "";
+            textBoxColumns_KMA.Text = "";
+
+            // 4. Деактивируем кнопку "Вернуться" (если нужно)
+            buttonReturn_KMA.Enabled = false;
+
+            // 5. Очистка поля результата поиска (если есть)
+            // labelSearchResult_KMA.Text = "";
+
         }
 
         private void buttonHelp_KMA_Click(object sender, EventArgs e)
@@ -321,6 +332,91 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
         }
 
         private void textBoxAddNational_KMA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSearch_KMA_Click(object sender, EventArgs e)
+        {
+            // Проверка заполнения
+            if (string.IsNullOrWhiteSpace(textBoxWhatSearch_KMA.Text) ||
+                string.IsNullOrWhiteSpace(textBoxColumns_KMA.Text))
+            {
+                MessageBox.Show("Не все поля заполнены!", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Проверка номера столбца
+            if (!int.TryParse(textBoxColumns_KMA.Text, out int columnNumber))
+            {
+                MessageBox.Show("Номер столбца должен быть числом!", "Ошибка",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Загрузка данных
+            string[,] DataMatrix = ds.GetMatrix(path);
+            int totalColumns = DataMatrix.GetLength(1);
+
+            // Проверка диапазона
+            if (columnNumber < 1 || columnNumber > totalColumns)
+            {
+                MessageBox.Show($"Нет такого столбца! Допустимо: 1-{totalColumns}",
+                               "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxColumns_KMA.Clear();
+                return;
+            }
+
+            // Поиск
+            string[,] searchResults = ds.Search(DataMatrix,
+                                               textBoxWhatSearch_KMA.Text,
+                                               columnNumber - 1);
+
+            // Проверка результатов
+            if (searchResults == null || searchResults.GetLength(0) == 0)
+            {
+                MessageBox.Show("Не нашлось совпадений!", "Информация",
+                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 1. Очистка таблицы (кроме заголовков)
+            for (int r = 1; r < dataGridViewResult_KMA.Rows.Count; r++)
+            {
+                for (int c = 0; c < totalColumns; c++)
+                {
+                    dataGridViewResult_KMA.Rows[r].Cells[c].Value = "";
+                }
+            }
+
+            // 2. Восстановление заголовков (первая строка)
+            for (int i = 0; i < totalColumns; i++)
+            {
+                dataGridViewResult_KMA.Rows[0].Cells[i].Value = DataMatrix[0, i];
+            }
+
+            // 3. Вывод найденных строк
+            for (int r = 0; r < searchResults.GetLength(0); r++)
+            {
+                for (int c = 0; c < searchResults.GetLength(1); c++)
+                {
+                    // +1 потому что первая строка занята заголовками
+                    dataGridViewResult_KMA.Rows[r + 1].Cells[c].Value = searchResults[r, c];
+                }
+            }
+
+            // 4. Активация кнопки возврата
+            buttonReturn_KMA.Enabled = true;
+
+        }
+
+        private void textBoxWhatSearch_KMA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxColumns_KMA_TextChanged(object sender, EventArgs e)
         {
 
         }

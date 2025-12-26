@@ -17,7 +17,7 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonOk_KMA_Click(object sender, EventArgs e)
         {
             this.Close();
         }

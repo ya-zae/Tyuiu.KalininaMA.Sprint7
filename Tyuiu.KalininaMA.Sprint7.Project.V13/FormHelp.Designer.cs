@@ -28,50 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            button1 = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHelp));
+            textBoxHelp_KMA = new TextBox();
+            buttonOk_KMA = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // textBoxHelp_KMA
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(28, 16);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 16);
-            textBox1.TabIndex = 0;
-            textBox1.Text = "cc";
+            textBoxHelp_KMA.BackColor = SystemColors.ControlLightLight;
+            textBoxHelp_KMA.Location = new Point(12, 56);
+            textBoxHelp_KMA.Multiline = true;
+            textBoxHelp_KMA.Name = "textBoxHelp_KMA";
+            textBoxHelp_KMA.ReadOnly = true;
+            textBoxHelp_KMA.ScrollBars = ScrollBars.Vertical;
+            textBoxHelp_KMA.Size = new Size(776, 332);
+            textBoxHelp_KMA.TabIndex = 1;
+            textBoxHelp_KMA.Text = resources.GetString("textBoxHelp_KMA.Text");
             // 
-            // textBox2
+            // buttonOk_KMA
             // 
-            textBox2.BackColor = SystemColors.ControlLightLight;
-            textBox2.Location = new Point(30, 56);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.ScrollBars = ScrollBars.Vertical;
-            textBox2.Size = new Size(758, 332);
-            textBox2.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(683, 414);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonOk_KMA.Location = new Point(683, 414);
+            buttonOk_KMA.Name = "buttonOk_KMA";
+            buttonOk_KMA.Size = new Size(75, 23);
+            buttonOk_KMA.TabIndex = 2;
+            buttonOk_KMA.Text = "Ок";
+            buttonOk_KMA.UseVisualStyleBackColor = true;
+            buttonOk_KMA.Click += buttonOk_KMA_Click;
             // 
             // FormHelp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(buttonOk_KMA);
+            Controls.Add(textBoxHelp_KMA);
             Name = "FormHelp";
             Text = "FormHelp";
             ResumeLayout(false);
@@ -79,9 +69,7 @@
         }
 
         #endregion
-
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Button button1;
+        private TextBox textBoxHelp_KMA;
+        private Button buttonOk_KMA;
     }
 }

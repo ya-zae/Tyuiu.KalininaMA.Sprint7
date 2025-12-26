@@ -32,13 +32,12 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13.Lib
             public string[,] SortMin(string[,] matrix, int NumberColumn) // по возрастанию
             {
                 int[] Entrance = new int[matrix.GetLength(0) - 1];
-                Entrance[Entrance.Length - 1] = Convert.ToInt32(matrix[matrix.GetLength(0) - 1, NumberColumn]);
-                for (int i = 0; i < Entrance.Length - 1; i++)
-                {
-                    Entrance[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
-                }
+            for (int i = 0; i < Entrance.Length; i++)
+            {
+                Entrance[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
+            }
 
-                Array.Sort(Entrance, (x, y) => x.CompareTo(y));
+            Array.Sort(Entrance, (x, y) => x.CompareTo(y));
 
                 string[,] SortMatrix = new string[matrix.GetLength(0), matrix.GetLength(1)];
 
