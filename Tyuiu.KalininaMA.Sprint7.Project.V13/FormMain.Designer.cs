@@ -518,7 +518,7 @@
             Controls.Add(panel1);
             MainMenuStrip = menuStrip1;
             Name = "FormMain";
-            Text = "FormMain";
+            Text = "География";
             Load += FormMain_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

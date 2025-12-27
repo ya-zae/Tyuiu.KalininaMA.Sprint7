@@ -63,7 +63,7 @@
             Controls.Add(buttonOk_KMA);
             Controls.Add(textBoxHelp_KMA);
             Name = "FormHelp";
-            Text = "FormHelp";
+            Text = "Помощь";
             ResumeLayout(false);
             PerformLayout();
         }

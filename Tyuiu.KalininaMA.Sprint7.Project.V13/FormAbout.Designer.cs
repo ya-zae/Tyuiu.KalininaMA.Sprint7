@@ -77,7 +77,7 @@
             Controls.Add(pictureBoxAvatar_KMA);
             Controls.Add(textBoxInfo);
             Name = "FormAbout";
-            Text = "FormAbout";
+            Text = "О разработчике";
             ((System.ComponentModel.ISupportInitialize)pictureBoxAvatar_KMA).EndInit();
             ResumeLayout(false);
             PerformLayout();

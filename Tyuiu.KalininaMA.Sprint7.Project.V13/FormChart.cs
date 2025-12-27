@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Tyuiu.KalininaMA.Sprint7.Project.V13.Lib;
 
 namespace Tyuiu.KalininaMA.Sprint7.Project.V13
@@ -18,23 +19,17 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
         public FormChart()
         {
             InitializeComponent();
+            chartStats_KMA.Legends.Clear();
         }
 
         public static string path = @"C:\Project_KMA\Main_KMA.csv";
 
-        private void buttonStats_KMA_Click(object sender, EventArgs e)
-        {
-            string[,] DataTable = ds.GetMatrix(path);
-            double AverageArea = ds.Average(DataTable, 3);
-            double AveragePopulation = ds.Average(DataTable, 5);
-        }
 
-        private void buttonStats_KMA_Click_1(object sender, EventArgs e)
+        private void buttonStats_KMA_Click(object sender, EventArgs e)
         {
             try
             {
                 string[,] DataTable = ds.GetMatrix(path);
-
                 double AverageArea = ds.Average(DataTable, 3);
                 double AveragePopulation = ds.Average(DataTable, 5);
 
@@ -48,10 +43,6 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
                     MessageBoxIcon.Information
                 );
 
-
-                // Добавляем подпись с общим количеством
-                chartStats_KMA.Titles.Clear();
-                chartStats_KMA.Titles.Add($"Всего стран: {DataTable.GetLength(0) - 1}");
 
             }
             catch (Exception ex)
@@ -68,6 +59,7 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
 
         private void buttonDevelop_KMA_Click(object sender, EventArgs e)
         {
+
             chartStats_KMA.Series[0].Points.Clear();
 
             this.chartStats_KMA.ChartAreas[0].AxisX.Title = "Является ли страна развитой";
@@ -83,6 +75,36 @@ namespace Tyuiu.KalininaMA.Sprint7.Project.V13
             {
                 chartStats_KMA.Series[0].Points.AddXY(ArrayWords[i], ArraySumWords[i]);
             }
+
+            // Добавляем подпись с общим количеством
+            chartStats_KMA.Titles.Clear();
+            chartStats_KMA.Titles.Add($"Всего стран: {DataTable.GetLength(0) - 1}");
+        }
+
+        private void buttonDevelopNot_KMA_Click(object sender, EventArgs e)
+        {
+            chartStats_KMA.Series[0].Points.Clear();
+            chartStats_KMA.Series[0].Name = "";
+
+            this.chartStats_KMA.ChartAreas[0].AxisX.Title = "Является ли страна развитой";
+            this.chartStats_KMA.ChartAreas[0].AxisY.Title = "Количество стран";
+
+            string[,] DataTable = ds.GetMatrix(path);
+
+            // Считаем вручную
+            int nonDevelopedCount = 0;
+            for (int i = 1; i < DataTable.GetLength(0); i++)
+            {
+                if (DataTable[i, 4].ToLower() == "нет")
+                {
+                    nonDevelopedCount++;
+                }
+            }
+
+            // Добавляем столбец
+            chartStats_KMA.Series[0].Points.AddXY("Нет", nonDevelopedCount);
+
+
         }
     }
 }

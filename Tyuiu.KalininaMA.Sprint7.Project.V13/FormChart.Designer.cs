@@ -35,6 +35,7 @@
             chartStats_KMA = new System.Windows.Forms.DataVisualization.Charting.Chart();
             toolTip_KMA = new ToolTip(components);
             groupBoxStats_KMA = new GroupBox();
+            buttonDevelopNot_KMA = new Button();
             buttonDevelop_KMA = new Button();
             buttonOk_KMA = new Button();
             buttonStats_KMA = new Button();
@@ -62,6 +63,7 @@
             // groupBoxStats_KMA
             // 
             groupBoxStats_KMA.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxStats_KMA.Controls.Add(buttonDevelopNot_KMA);
             groupBoxStats_KMA.Controls.Add(buttonDevelop_KMA);
             groupBoxStats_KMA.Controls.Add(buttonOk_KMA);
             groupBoxStats_KMA.Controls.Add(buttonStats_KMA);
@@ -72,9 +74,19 @@
             groupBoxStats_KMA.TabStop = false;
             groupBoxStats_KMA.Text = "Статистика";
             // 
+            // buttonDevelopNot_KMA
+            // 
+            buttonDevelopNot_KMA.Location = new Point(6, 259);
+            buttonDevelopNot_KMA.Name = "buttonDevelopNot_KMA";
+            buttonDevelopNot_KMA.Size = new Size(129, 81);
+            buttonDevelopNot_KMA.TabIndex = 6;
+            buttonDevelopNot_KMA.Text = "Сколько существует неразвитых стран";
+            buttonDevelopNot_KMA.UseVisualStyleBackColor = true;
+            buttonDevelopNot_KMA.Click += buttonDevelopNot_KMA_Click;
+            // 
             // buttonDevelop_KMA
             // 
-            buttonDevelop_KMA.Location = new Point(6, 243);
+            buttonDevelop_KMA.Location = new Point(6, 170);
             buttonDevelop_KMA.Name = "buttonDevelop_KMA";
             buttonDevelop_KMA.Size = new Size(131, 83);
             buttonDevelop_KMA.TabIndex = 5;
@@ -84,7 +96,7 @@
             // 
             // buttonOk_KMA
             // 
-            buttonOk_KMA.Location = new Point(6, 344);
+            buttonOk_KMA.Location = new Point(6, 365);
             buttonOk_KMA.Name = "buttonOk_KMA";
             buttonOk_KMA.Size = new Size(75, 39);
             buttonOk_KMA.TabIndex = 4;
@@ -94,23 +106,24 @@
             // 
             // buttonStats_KMA
             // 
-            buttonStats_KMA.Location = new Point(6, 147);
+            buttonStats_KMA.Location = new Point(6, 74);
             buttonStats_KMA.Name = "buttonStats_KMA";
             buttonStats_KMA.Size = new Size(131, 90);
             buttonStats_KMA.TabIndex = 3;
             buttonStats_KMA.Text = "Общая статистика";
             buttonStats_KMA.UseVisualStyleBackColor = true;
-            buttonStats_KMA.Click += buttonStats_KMA_Click_1;
+            buttonStats_KMA.Click += buttonStats_KMA_Click;
             // 
             // FormChart
             // 
+            AllowDrop = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 493);
             Controls.Add(groupBoxStats_KMA);
             Controls.Add(chartStats_KMA);
             Name = "FormChart";
-            Text = "FormChart";
+            Text = "График стран";
             ((System.ComponentModel.ISupportInitialize)chartStats_KMA).EndInit();
             groupBoxStats_KMA.ResumeLayout(false);
             ResumeLayout(false);
@@ -124,5 +137,6 @@
         private Button buttonStats_KMA;
         private Button buttonOk_KMA;
         private Button buttonDevelop_KMA;
+        private Button buttonDevelopNot_KMA;
     }
 }
